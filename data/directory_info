@@ -1,0 +1,10 @@
+Directory containing data. The following files would be needed for full reproducibility in the following structure:
+
+├── intent
+│   ├── en
+│   ├── es
+│   └── fr
+├── questions
+│   └── final_master_dataset.csv
+└── tweets
+    └── tweets.csv
