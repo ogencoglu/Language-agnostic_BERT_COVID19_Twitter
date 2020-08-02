@@ -7,11 +7,11 @@ This repository provides the full implementation in *python 3.7*. Requires Twitt
 
 Main Idea
 ====================
-**Utilizing Language-agnostic BERT Sentence Embeddings (LaBSE) to analyze 28 million tweets related to COVID-19**
+**Utilizing Language-agnostic BERT Sentence Embeddings (LaBSE) to analyze 28 million tweets in 109 languages related to COVID-19**
 
 .. raw:: html
 
-    <img src="https://github.com/ogencoglu/Language-agnostic_BERT_COVID19_Twitter/blob/master/media/umap.png" height="600px">
+    <img src="https://github.com/ogencoglu/Language-agnostic_BERT_COVID19_Twitter/blob/master/media/umap.png" height="600px" class="center">
 
 Reproduction of Results
 ====================
@@ -23,7 +23,15 @@ Follow steps *1-5* below.
 
 See *directory_info* in the *data* directory for the expected files.
 
-**1.1 -** `Download <https://zenodo.org/record/3738018#.Xya8tGMzbCJ>`_ 30+ million tweet IDs and hydrate them into tweet text and timestamp (requires Twitter developer account). Once *tweets.csv* is in the format specified as an example, preprocess by running:
+**1.1 -** `Download <https://zenodo.org/record/3738018#.Xya8tGMzbCJ>`_ 30+ million tweet IDs and hydrate them into timestamp and tweet text (requires Twitter developer account). 
+
+.. code-block:: bash
+
+   Jan 17,tweet_text_string
+   Jan 27,tweet_text_string
+   ...
+
+Once *tweets.csv* is in the example format above, preprocess by running:
 
 .. code-block:: bash
 
