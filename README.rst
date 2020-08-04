@@ -1,7 +1,7 @@
 .. image:: https://github.com/ogencoglu/Language-agnostic_BERT_COVID19_Twitter/blob/master/media/timeline.png
    :width: 400
 
-Implementation of `Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19` - Gencoglu O. (2020)
+Implementation of `Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19 <https://arxiv.org/abs/2008.00461>`_ - Gencoglu O. (2020)
 ====================
 This repository provides the full implementation in *python 3.7*. Requires Twitter developer account.
 
@@ -11,7 +11,7 @@ Main Idea
 
 .. raw:: html
 
-    <img src="https://github.com/ogencoglu/Language-agnostic_BERT_COVID19_Twitter/blob/master/media/umap.png" height="600px" class="center">
+    <img src="https://github.com/ogencoglu/Language-agnostic_BERT_COVID19_Twitter/blob/master/media/umap.png" height="700px" class="center">
 
 Reproduction of Results
 ====================
@@ -89,3 +89,19 @@ Relevant configurations are defined in *configs.py*, e.g.:
   ├── train.py
   ├── umap_vis.py
   └── utils.py
+  
+Cite 
+====================
+  
+.. code-block::
+
+    @article{gencoglu2020large,
+      title={Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19},
+      author={Gencoglu, Oguzhan},
+      journal={arXiv preprint arXiv:2008.00461},
+      year={2020}
+    }
+    
+Or
+
+    Gencoglu, Oguzhan. "Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19." arXiv preprint arXiv:2008.00461 (2020).
