@@ -90,7 +90,7 @@ Relevant configurations are defined in *configs.py*, e.g.:
   ├── umap_vis.py
   └── utils.py
   
-Cite 
+`Cite <https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Large-scale%2C+Language-agnostic+Discourse+Classification+of+Tweets+During+COVID-19&btnG=>`_
 ====================
   
 .. code-block::
