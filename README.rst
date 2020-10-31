@@ -42,8 +42,17 @@ Once *tweets.csv* is in the example format above, preprocess by running:
   --Intent Dataset        `Link <https://fb.me/covid_mcid_dataset>`_
   --Questions Dataset     `Link <https://github.com/JerryWei03/COVID-Q>`_
 
-2 - Extract Language-agnostic BERT Sentence Embeddings (LaBSE)
+2 - Extract Tweet Embeddings
 -------------------------------
+
+2.1 - **BERT**
+
+.. code-block:: bash
+
+  python3.7 extract_BERT_embeddings.py -m intent
+  python3.7 extract_BERT_embeddings.py -m questions
+
+2.2 - **Language-agnostic BERT Sentence Embeddings (LaBSE)**
 
 .. code-block:: bash
 
@@ -55,13 +64,14 @@ Relevant configurations are defined in *configs.py*, e.g.:
 
   --model_url                  'https://tfhub.dev/google/LaBSE/1'
   --max_seq_length             128
+  --bert_model                 'bert-base-multilingual-uncased'
 
 3 - Cross-validation and Bayesian Hyperparameter Optimization
 -------------------------------
 
 .. code-block:: bash
 
-  python3.7 train.py -m hyper_opt -c "model_identifier"
+  python3.7 train.py -m hyper_opt -c "model_identifier" -e "embeddings_identifier"
 
 4 - Train
 -------------------------------
@@ -82,6 +92,7 @@ Relevant configurations are defined in *configs.py*, e.g.:
 .. code-block:: bash
 
   ├── configs.py
+  ├── extract_BERT_embeddings.py
   ├── extract_LaBSE_embeddings.py
   ├── inference.py
   ├── LaBSE.py
