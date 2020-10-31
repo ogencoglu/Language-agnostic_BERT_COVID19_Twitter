@@ -61,6 +61,7 @@ def get_param_space(classifier_identifier):
         ]
     elif classifier_identifier == 'SVM':
         param_space = [
+            Categorical(['rbf', 'linear', 'poly'], name='kernel'),
             Real(0.1, 10, prior="log-uniform", name='C'),
         ]
     else:
@@ -117,10 +118,13 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--classifier', required=True,
                         choices=['kNN', 'LR', 'SVM'],
                         help='"kNN", "LR", or "SVM"')
+    parser.add_argument('-e', '--embeddings', required=True,
+                        choices=['bert', 'labse'],
+                        help='"bert" or "labse"')
     args = parser.parse_args()
 
     # load data
-    data, embeddings = merge_datasets()
+    data, embeddings = merge_datasets(args.embeddings)
     labels = LabelEncoder().fit_transform(data['class'])
 
     # instantiate classifier model
@@ -130,7 +134,8 @@ if __name__ == '__main__':
         param_space = get_param_space(args.classifier)
         gaussian_process_hyper_opt(data=embeddings, labels=labels, model=model,
                                    param_space=param_space,
-                                   model_name=args.classifier)
+                                   model_name='{}_{}'.format(args.classifier,
+                                                             args.embeddings))
     elif args.mode == 'train':
         print('\nTraining for {}...'.format(args.classifier))
         best_params = load_logs(args.classifier)

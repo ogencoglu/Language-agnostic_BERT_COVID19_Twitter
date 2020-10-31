@@ -56,7 +56,7 @@ def read_intent_dataset(verbose=True):
         data = data[data['class'] != 'intent:{}'.format(cat)]
 
     if verbose:
-        print('Data shape={}'.format(data.shape))
+        print('\t"Intent" data shape={}'.format(data.shape))
 
     return data
 
@@ -82,14 +82,15 @@ def read_questions_dataset(verbose=True):
     data = data[[i in cf.questions_relevant_categories for i in data['class']]]
 
     if verbose:
-        print('Data shape={}'.format(data.shape))
+        print('\t"Questions" data shape={}'.format(data.shape))
 
     return data
 
 
-def merge_datasets(verbose=True):
+def merge_datasets(embeddings='labse', verbose=True):
     '''
     Merge 'Intent' and 'Questions' datasets
+    [embeddings] : str, type of embeddings to load ('bert' or 'labse')
     [verbose] : bool, verbosity level
     '''
     # load datasets
@@ -98,15 +99,23 @@ def merge_datasets(verbose=True):
     merged = pd.concat([intent, questions])
 
     # load corresponding embeddings
-    intent_embeddings = np.load(abspath(join(cf.INTENT_DIR,
-                                             cf.intent_embeddings)))
+    if embeddings == 'labse':
+        emb_to_load = (cf.intent_embeddings, cf.questions_embeddings)
+    elif embeddings == 'bert':
+        emb_to_load = (cf.intent_embeddings_bert, cf.questions_embeddings_bert)
+    else:
+        raise ValueError("embeddings argument can be 'bert' or 'labse'")
+    print(f'{embeddings} embeddings loaded.')
+
+    intent_embeddings = np.load(abspath(join(cf.INTENT_DIR, emb_to_load[0])))
     questions_embeddings = np.load(abspath(join(cf.QUESTIONS_DIR,
-                                                cf.questions_embeddings)))
-    merged_embeddings = merged_embeddings = np.vstack([intent_embeddings,
-                                                       questions_embeddings])
+                                                emb_to_load[1])))
+    merged_embeddings = np.vstack([intent_embeddings, questions_embeddings])
+
+    assert merged.shape[0] == merged_embeddings.shape[0]
 
     if verbose:
-        print('Data shape={}'.format(merged.shape))
+        print('Full data shape={}'.format(merged.shape))
 
     return merged, merged_embeddings
 

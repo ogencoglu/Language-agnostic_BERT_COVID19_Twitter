@@ -29,10 +29,15 @@ class Config(object):
     cleaned_tweets_file = 'tweets_cleaned.csv'
     questions_embeddings = 'questions_embeddings.npy'
     intent_embeddings = 'intent_embeddings.npy'
+    questions_embeddings_bert = 'questions_embeddings_bert.npy'
+    intent_embeddings_bert = 'intent_embeddings_bert.npy'
 
     # language agnostic sentence BERT params
     model_url = "https://tfhub.dev/google/LaBSE/1"
     max_seq_length = 128
+
+    # BERT params
+    bert_model = 'bert-base-multilingual-uncased'
 
     # params related to embedding extraction processs
     batch_size = 50000
