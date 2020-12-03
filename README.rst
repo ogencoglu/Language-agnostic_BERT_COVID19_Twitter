@@ -106,13 +106,17 @@ Relevant configurations are defined in *configs.py*, e.g.:
   
 .. code-block::
 
-    @article{gencoglu2020large,
-      title={Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19},
-      author={Gencoglu, Oguzhan},
-      journal={arXiv preprint arXiv:2008.00461},
-      year={2020}
-    }
+   @article{gencoglu2020large,
+     title={Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19},
+     author={Gencoglu, Oguzhan},
+     journal={Machine Learning and Knowledge Extraction},
+     volume={2},
+     number={4},
+     pages={603--616},
+     year={2020},
+     doi={10.3390/make2040032}
+   }
     
 Or
 
-    Gencoglu, Oguzhan. "Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19." arXiv preprint arXiv:2008.00461 (2020).
+    Gencoglu, Oguzhan. "Large-scale, Language-agnostic Discourse Classification of Tweets During COVID-19." *Machine Learning and Knowledge Extraction*. 2020; 2(4):603-616.
